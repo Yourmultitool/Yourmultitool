@@ -3,26 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Your Multi Tool - All-in-One Online Tools</title>
+    <title>PDF Magic - Your Online PDF Toolkit</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
     <link rel="stylesheet" href="styles.css">
     <link rel="icon" href="favicon.ico">
 </head>
 <body>
-    <!-- Snow Animation Background -->
-    <div class="snow-animation"></div>
+    <!-- Floating Particles Background -->
+    <div class="particles-bg"></div>
     
-    <!-- Header with Gradient Animation -->
-    <header class="animated-header">
+    <!-- Header -->
+    <header class="main-header">
         <div class="container">
-            <div class="logo">
-                <h1 class="logo-text">Your Multi Tool</h1>
+            <div class="logo animate__animated animate__fadeInLeft">
+                <img src="logo.png" alt="PDF Magic">
+                <span>PDF Magic</span>
             </div>
-            <nav class="main-nav">
+            <nav class="main-nav animate__animated animate__fadeInRight">
                 <ul>
-                    <li><a href="#home" class="nav-link">Home</a></li>
-                    <li><a href="#tools" class="nav-link">Explore Tools</a></li>
+                    <li><a href="#features" class="nav-link">Features</a></li>
+                    <li><a href="#tools" class="nav-link">Tools</a></li>
                     <li><a href="#contact" class="nav-link">Contact</a></li>
+                    <li><a href="#" class="btn-login">Login</a></li>
                 </ul>
             </nav>
             <div class="mobile-menu-btn">
@@ -33,13 +36,49 @@
         </div>
     </header>
 
-    <!-- Home Section -->
-    <section id="home" class="home-section">
+    <!-- Hero Section -->
+    <section class="hero-section">
         <div class="container">
-            <div class="hero-content">
-                <h2 class="hero-title">All-in-One Online Tools Platform</h2>
-                <p class="hero-subtitle">15+ powerful tools for your daily needs</p>
-                <a href="#tools" class="cta-button">Start Exploring</a>
+            <div class="hero-content animate__animated animate__fadeInUp">
+                <h1>Your Complete PDF Solution</h1>
+                <p>Merge, split, compress, convert and edit PDF files for free</p>
+                <div class="cta-buttons">
+                    <a href="#tools" class="btn-primary">Try Online</a>
+                    <a href="#" class="btn-secondary">Download</a>
+                </div>
+            </div>
+            <div class="hero-image animate__animated animate__fadeInRight">
+                <img src="pdf-hero.png" alt="PDF Tools">
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="features-section">
+        <div class="container">
+            <h2 class="section-title animate__animated animate__fadeIn">Why Choose PDF Magic?</h2>
+            <div class="features-grid">
+                <div class="feature-card animate__animated animate__fadeInUp" data-delay="0.1s">
+                    <div class="feature-icon">
+                        <i class="fas fa-lock"></i>
+                    </div>
+                    <h3>Secure Processing</h3>
+                    <p>All files are processed in your browser for maximum privacy</p>
+                </div>
+                <div class="feature-card animate__animated animate__fadeInUp" data-delay="0.2s">
+                    <div class="feature-icon">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <h3>Lightning Fast</h3>
+                    <p>Process PDFs in seconds with our optimized tools</p>
+                </div>
+                <div class="feature-card animate__animated animate__fadeInUp" data-delay="0.3s">
+                    <div class="feature-icon">
+                        <i class="fas fa-heart"></i>
+                    </div>
+                    <h3>100% Free</h3>
+                    <p>No watermarks, no registration, no hidden fees</p>
+                </div>
             </div>
         </div>
     </section>
@@ -47,13 +86,56 @@
     <!-- Tools Section -->
     <section id="tools" class="tools-section">
         <div class="container">
-            <h2 class="section-title">Our Tools Collection</h2>
-            <div class="search-container">
-                <input type="text" id="toolSearch" placeholder="Search tools...">
-                <i class="fas fa-search search-icon"></i>
-            </div>
-            <div class="tools-grid" id="toolsContainer">
-                <!-- Tools will be loaded here by JavaScript -->
+            <h2 class="section-title animate__animated animate__fadeIn">Our PDF Tools</h2>
+            <div class="tools-grid">
+                <div class="tool-card animate__animated animate__fadeInUp" data-delay="0.1s">
+                    <div class="tool-icon">
+                        <i class="fas fa-object-group"></i>
+                    </div>
+                    <h3>Merge PDF</h3>
+                    <p>Combine multiple PDFs into one document</p>
+                    <a href="#" class="btn-tool">Select Files</a>
+                </div>
+                <div class="tool-card animate__animated animate__fadeInUp" data-delay="0.2s">
+                    <div class="tool-icon">
+                        <i class="fas fa-cut"></i>
+                    </div>
+                    <h3>Split PDF</h3>
+                    <p>Extract pages or divide PDF into multiple files</p>
+                    <a href="#" class="btn-tool">Select Files</a>
+                </div>
+                <div class="tool-card animate__animated animate__fadeInUp" data-delay="0.3s">
+                    <div class="tool-icon">
+                        <i class="fas fa-compress-alt"></i>
+                    </div>
+                    <h3>Compress PDF</h3>
+                    <p>Reduce file size while maintaining quality</p>
+                    <a href="#" class="btn-tool">Select Files</a>
+                </div>
+                <div class="tool-card animate__animated animate__fadeInUp" data-delay="0.4s">
+                    <div class="tool-icon">
+                        <i class="fas fa-exchange-alt"></i>
+                    </div>
+                    <h3>PDF to Word</h3>
+                    <p>Convert PDFs to editable Word documents</p>
+                    <a href="#" class="btn-tool">Select Files</a>
+                </div>
+                <div class="tool-card animate__animated animate__fadeInUp" data-delay="0.5s">
+                    <div class="tool-icon">
+                        <i class="fas fa-file-image"></i>
+                    </div>
+                    <h3>PDF to JPG</h3>
+                    <p>Extract images from PDF or convert pages to JPG</p>
+                    <a href="#" class="btn-tool">Select Files</a>
+                </div>
+                <div class="tool-card animate__animated animate__fadeInUp" data-delay="0.6s">
+                    <div class="tool-icon">
+                        <i class="fas fa-lock-open"></i>
+                    </div>
+                    <h3>Unlock PDF</h3>
+                    <p>Remove password protection from PDFs</p>
+                    <a href="#" class="btn-tool">Select Files</a>
+                </div>
             </div>
         </div>
     </section>
@@ -61,24 +143,76 @@
     <!-- Contact Section -->
     <section id="contact" class="contact-section">
         <div class="container">
-            <h2 class="section-title">Get In Touch</h2>
-            <div class="contact-info">
-                <p><i class="fas fa-envelope"></i> yourmultitool@gmail.com</p>
+            <h2 class="section-title animate__animated animate__fadeIn">Contact Us</h2>
+            <div class="contact-content">
+                <div class="contact-info animate__animated animate__fadeInLeft">
+                    <h3>Get in Touch</h3>
+                    <p><i class="fas fa-envelope"></i> support@pdfmagic.com</p>
+                    <p><i class="fas fa-phone"></i> +1 (555) 123-4567</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="contact-form animate__animated animate__fadeInRight">
+                    <form>
+                        <div class="form-group">
+                            <input type="text" placeholder="Your Name" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" placeholder="Your Email" required>
+                        </div>
+                        <div class="form-group">
+                            <textarea placeholder="Your Message" required></textarea>
+                        </div>
+                        <button type="submit" class="btn-primary">Send Message</button>
+                    </form>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- Footer with Animation -->
-    <footer class="animated-footer">
+    <!-- Footer -->
+    <footer class="main-footer">
         <div class="container">
             <div class="footer-content">
-                <div class="copyright">
-                    &copy; <span id="currentYear"></span> Your Multi Tool. All rights reserved.
+                <div class="footer-logo">
+                    <img src="logo-white.png" alt="PDF Magic">
+                    <span>PDF Magic</span>
                 </div>
                 <div class="footer-links">
-                    <a href="#home">Home</a>
-                    <a href="#tools">Tools</a>
-                    <a href="#contact">Contact</a>
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#features">Features</a></li>
+                        <li><a href="#tools">Tools</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Tools</h4>
+                    <ul>
+                        <li><a href="#">Merge PDF</a></li>
+                        <li><a href="#">Split PDF</a></li>
+                        <li><a href="#">Compress PDF</a></li>
+                        <li><a href="#">PDF to Word</a></li>
+                    </ul>
+                </div>
+                <div class="footer-newsletter">
+                    <h4>Newsletter</h4>
+                    <form>
+                        <input type="email" placeholder="Your Email">
+                        <button type="submit">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; <span id="currentYear"></span> PDF Magic. All rights reserved.</p>
+                <div class="legal-links">
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Service</a>
+                    <a href="#">Cookies</a>
                 </div>
             </div>
         </div>
