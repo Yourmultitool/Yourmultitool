@@ -3,21 +3,12 @@ document.addEventListener('DOMContentLoaded', function() {
     document.getElementById('currentYear').textContent = new Date().getFullYear();
     
     // Mobile menu toggle
-    const hamburger = document.querySelector('.hamburger');
-    const mobileNav = document.querySelector('.mobile-nav');
+    const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+    const mainNav = document.querySelector('.main-nav ul');
     
-    hamburger.addEventListener('click', function() {
+    mobileMenuBtn.addEventListener('click', function() {
         this.classList.toggle('active');
-        mobileNav.classList.toggle('active');
-    });
-    
-    // Close mobile menu when clicking a link
-    const navLinks = document.querySelectorAll('.mobile-nav .nav-link');
-    navLinks.forEach(link => {
-        link.addEventListener('click', () => {
-            hamburger.classList.remove('active');
-            mobileNav.classList.remove('active');
-        });
+        mainNav.classList.toggle('active');
     });
     
     // Smooth scrolling for navigation links
@@ -33,25 +24,13 @@ document.addEventListener('DOMContentLoaded', function() {
                     top: targetElement.offsetTop - 80,
                     behavior: 'smooth'
                 });
+                
+                // Close mobile menu if open
+                if (mainNav.classList.contains('active')) {
+                    mobileMenuBtn.classList.remove('active');
+                    mainNav.classList.remove('active');
+                }
             }
-        });
-    });
-    
-    // Scroll to top button
-    const scrollTopBtn = document.querySelector('.scroll-top');
-    
-    window.addEventListener('scroll', function() {
-        if (window.pageYOffset > 300) {
-            scrollTopBtn.classList.add('active');
-        } else {
-            scrollTopBtn.classList.remove('active');
-        }
-    });
-    
-    scrollTopBtn.addEventListener('click', function() {
-        window.scrollTo({
-            top: 0,
-            behavior: 'smooth'
         });
     });
     
@@ -60,104 +39,105 @@ document.addEventListener('DOMContentLoaded', function() {
         {
             title: 'Image to PDF',
             icon: 'fa-file-pdf',
-            description: 'Convert your images to PDF documents easily',
-            link: '#'
+            description: 'Convert multiple images to high quality PDF documents',
+            link: 'image-to-pdf.html'
         },
         {
             title: 'PDF to Word',
             icon: 'fa-file-word',
             description: 'Convert PDF files to editable Word documents',
-            link: '#'
+            link: 'pdf-to-word.html'
         },
         {
             title: 'Age Calculator',
             icon: 'fa-calculator',
-            description: 'Calculate your exact age in years, months and days',
-            link: '#'
+            description: 'Calculate exact age from birth date',
+            link: 'age-calculator.html'
         },
         {
             title: 'Word Counter',
             icon: 'fa-font',
-            description: 'Count words, characters and sentences in your text',
-            link: '#'
+            description: 'Count words, characters, and sentences in text',
+            link: 'word-counter.html'
         },
         {
             title: 'Text to Speech',
             icon: 'fa-volume-up',
-            description: 'Convert written text into natural sounding speech',
-            link: '#'
+            description: 'Convert text to natural sounding speech',
+            link: 'text-to-speech.html'
         },
         {
             title: 'QR Code Generator',
             icon: 'fa-qrcode',
-            description: 'Create QR codes for URLs, text, contacts and more',
-            link: '#'
+            description: 'Create QR codes for URLs, text, and more',
+            link: 'qr-generator.html'
         },
         {
             title: 'Image Compressor',
             icon: 'fa-file-image',
-            description: 'Reduce image file size without losing quality',
-            link: '#'
+            description: 'Reduce image size without losing quality',
+            link: 'image-compressor.html'
         },
         {
             title: 'YouTube Thumbnail Downloader',
             icon: 'fa-youtube',
             description: 'Download thumbnails from YouTube videos',
-            link: '#'
+            link: 'yt-thumbnail.html'
         },
         {
             title: 'YouTube Video Downloader',
             icon: 'fa-video',
-            description: 'Download videos from YouTube in various formats',
-            link: '#'
+            description: 'Download videos from YouTube in HD quality',
+            link: 'yt-downloader.html'
         },
         {
             title: 'Base64 Encoder/Decoder',
             icon: 'fa-code',
             description: 'Encode and decode Base64 strings and files',
-            link: '#'
+            link: 'base64-converter.html'
         },
         {
             title: 'RGB to HEX Converter',
             icon: 'fa-palette',
-            description: 'Convert RGB color values to HEX and vice versa',
-            link: '#'
+            description: 'Convert between RGB and HEX color codes',
+            link: 'rgb-hex.html'
         },
         {
             title: 'JSON Formatter',
             icon: 'fa-file-code',
-            description: 'Format and validate JSON data with syntax highlighting',
-            link: '#'
+            description: 'Format and validate JSON data',
+            link: 'json-formatter.html'
         },
         {
             title: 'Online Notepad',
             icon: 'fa-edit',
-            description: 'A simple online text editor with save functionality',
-            link: '#'
+            description: 'Simple text editor with save functionality',
+            link: 'notepad.html'
         },
         {
             title: 'Case Converter',
             icon: 'fa-text-height',
             description: 'Convert text between different case styles',
-            link: '#'
+            link: 'case-converter.html'
         },
         {
             title: 'URL Encoder/Decoder',
             icon: 'fa-link',
-            description: 'Encode and decode URLs and URI components',
-            link: '#'
+            description: 'Encode and decode URL components',
+            link: 'url-converter.html'
         }
     ];
     
-    // Render tools
+    // Render tools with staggered animation
     const toolsContainer = document.getElementById('toolsContainer');
     
     function renderTools(toolsToRender) {
         toolsContainer.innerHTML = '';
         
-        toolsToRender.forEach(tool => {
+        toolsToRender.forEach((tool, index) => {
             const toolCard = document.createElement('div');
             toolCard.className = 'tool-card';
+            toolCard.style.animationDelay = `${index * 0.1}s`;
             toolCard.innerHTML = `
                 <div class="tool-icon">
                     <i class="fas ${tool.icon}"></i>
@@ -170,9 +150,10 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
     
+    // Initial render
     renderTools(tools);
     
-    // Tool search functionality
+    // Search functionality
     const toolSearch = document.getElementById('toolSearch');
     
     toolSearch.addEventListener('input', function() {
@@ -187,7 +168,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
         
         tools.forEach((tool, index) => {
-            if (tool.title.toLowerCase().includes(searchTerm) {
+            if (tool.title.toLowerCase().includes(searchTerm)) {
                 toolCards[index].classList.add('highlight');
             } else {
                 toolCards[index].classList.remove('highlight');
@@ -195,39 +176,13 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
     
-    // Ripple effect for buttons
-    document.addEventListener('click', function(e) {
-        if (e.target.classList.contains('submit-btn')) {
-            const btn = e.target;
-            const ripple = document.createElement('span');
-            ripple.className = 'ripple';
-            
-            const rect = btn.getBoundingClientRect();
-            const size = Math.max(rect.width, rect.height);
-            const x = e.clientX - rect.left - size / 2;
-            const y = e.clientY - rect.top - size / 2;
-            
-            ripple.style.width = ripple.style.height = `${size}px`;
-            ripple.style.left = `${x}px`;
-            ripple.style.top = `${y}px`;
-            
-            btn.appendChild(ripple);
-            
-            setTimeout(() => {
-                ripple.remove();
-            }, 600);
+    // Header shadow on scroll
+    window.addEventListener('scroll', function() {
+        const header = document.querySelector('.animated-header');
+        if (window.scrollY > 50) {
+            header.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.2)';
+        } else {
+            header.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.1)';
         }
-    });
-    
-    // Contact form submission
-    const contactForm = document.getElementById('contactForm');
-    
-    contactForm.addEventListener('submit', function(e) {
-        e.preventDefault();
-        
-        // Here you would typically send the form data to a server
-        // For this example, we'll just show an alert
-        alert('Thank you for your message! We will get back to you soon.');
-        this.reset();
     });
 });
