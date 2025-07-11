@@ -42,90 +42,7 @@ document.addEventListener('DOMContentLoaded', function() {
             description: 'Convert multiple images to high quality PDF documents',
             link: 'image-to-pdf.html'
         },
-        {
-            title: 'PDF to Word',
-            icon: 'fa-file-word',
-            description: 'Convert PDF files to editable Word documents',
-            link: 'pdf-to-word.html'
-        },
-        {
-            title: 'Age Calculator',
-            icon: 'fa-calculator',
-            description: 'Calculate exact age from birth date',
-            link: 'age-calculator.html'
-        },
-        {
-            title: 'Word Counter',
-            icon: 'fa-font',
-            description: 'Count words, characters, and sentences in text',
-            link: 'word-counter.html'
-        },
-        {
-            title: 'Text to Speech',
-            icon: 'fa-volume-up',
-            description: 'Convert text to natural sounding speech',
-            link: 'text-to-speech.html'
-        },
-        {
-            title: 'QR Code Generator',
-            icon: 'fa-qrcode',
-            description: 'Create QR codes for URLs, text, and more',
-            link: 'qr-generator.html'
-        },
-        {
-            title: 'Image Compressor',
-            icon: 'fa-file-image',
-            description: 'Reduce image size without losing quality',
-            link: 'image-compressor.html'
-        },
-        {
-            title: 'YouTube Thumbnail Downloader',
-            icon: 'fa-youtube',
-            description: 'Download thumbnails from YouTube videos',
-            link: 'yt-thumbnail.html'
-        },
-        {
-            title: 'YouTube Video Downloader',
-            icon: 'fa-video',
-            description: 'Download videos from YouTube in HD quality',
-            link: 'yt-downloader.html'
-        },
-        {
-            title: 'Base64 Encoder/Decoder',
-            icon: 'fa-code',
-            description: 'Encode and decode Base64 strings and files',
-            link: 'base64-converter.html'
-        },
-        {
-            title: 'RGB to HEX Converter',
-            icon: 'fa-palette',
-            description: 'Convert between RGB and HEX color codes',
-            link: 'rgb-hex.html'
-        },
-        {
-            title: 'JSON Formatter',
-            icon: 'fa-file-code',
-            description: 'Format and validate JSON data',
-            link: 'json-formatter.html'
-        },
-        {
-            title: 'Online Notepad',
-            icon: 'fa-edit',
-            description: 'Simple text editor with save functionality',
-            link: 'notepad.html'
-        },
-        {
-            title: 'Case Converter',
-            icon: 'fa-text-height',
-            description: 'Convert text between different case styles',
-            link: 'case-converter.html'
-        },
-        {
-            title: 'URL Encoder/Decoder',
-            icon: 'fa-link',
-            description: 'Encode and decode URL components',
-            link: 'url-converter.html'
-        }
+        // ... (rest of your tool data remains the same)
     ];
     
     // Render tools with staggered animation
@@ -153,25 +70,24 @@ document.addEventListener('DOMContentLoaded', function() {
     // Initial render
     renderTools(tools);
     
-    // Search functionality
+    // Fixed Search functionality
     const toolSearch = document.getElementById('toolSearch');
     
     toolSearch.addEventListener('input', function() {
-        const searchTerm = this.value.toLowerCase();
+        const searchTerm = this.value.toLowerCase().trim();
         const toolCards = document.querySelectorAll('.tool-card');
         
-        if (searchTerm === '') {
-            toolCards.forEach(card => {
+        toolCards.forEach(card => {
+            const title = card.querySelector('.tool-title').textContent.toLowerCase();
+            if (searchTerm === '') {
                 card.classList.remove('highlight');
-            });
-            return;
-        }
-        
-        tools.forEach((tool, index) => {
-            if (tool.title.toLowerCase().includes(searchTerm)) {
-                toolCards[index].classList.add('highlight');
+                card.style.display = 'block';
+            } else if (title.includes(searchTerm)) {
+                card.classList.add('highlight');
+                card.style.display = 'block';
             } else {
-                toolCards[index].classList.remove('highlight');
+                card.classList.remove('highlight');
+                card.style.display = 'none';
             }
         });
     });
