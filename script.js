@@ -34,71 +34,45 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
     
-    // Tool data
-    const tools = [
-        {
-            title: 'Image to PDF',
-            icon: 'fa-file-pdf',
-            description: 'Convert multiple images to high quality PDF documents',
-            link: 'image-to-pdf.html'
-        },
-        // ... (rest of your tool data remains the same)
-    ];
-    
-    // Render tools with staggered animation
-    const toolsContainer = document.getElementById('toolsContainer');
-    
-    function renderTools(toolsToRender) {
-        toolsContainer.innerHTML = '';
+    // Animate elements when they come into view
+    const animateOnScroll = function() {
+        const elements = document.querySelectorAll('.animate__animated');
         
-        toolsToRender.forEach((tool, index) => {
-            const toolCard = document.createElement('div');
-            toolCard.className = 'tool-card';
-            toolCard.style.animationDelay = `${index * 0.1}s`;
-            toolCard.innerHTML = `
-                <div class="tool-icon">
-                    <i class="fas ${tool.icon}"></i>
-                </div>
-                <h3 class="tool-title">${tool.title}</h3>
-                <p class="tool-desc">${tool.description}</p>
-                <a href="${tool.link}" class="use-tool-btn">Use Tool</a>
-            `;
-            toolsContainer.appendChild(toolCard);
-        });
-    }
-    
-    // Initial render
-    renderTools(tools);
-    
-    // Fixed Search functionality
-    const toolSearch = document.getElementById('toolSearch');
-    
-    toolSearch.addEventListener('input', function() {
-        const searchTerm = this.value.toLowerCase().trim();
-        const toolCards = document.querySelectorAll('.tool-card');
-        
-        toolCards.forEach(card => {
-            const title = card.querySelector('.tool-title').textContent.toLowerCase();
-            if (searchTerm === '') {
-                card.classList.remove('highlight');
-                card.style.display = 'block';
-            } else if (title.includes(searchTerm)) {
-                card.classList.add('highlight');
-                card.style.display = 'block';
-            } else {
-                card.classList.remove('highlight');
-                card.style.display = 'none';
+        elements.forEach(element => {
+            const elementPosition = element.getBoundingClientRect().top;
+            const windowHeight = window.innerHeight;
+            
+            if (elementPosition < windowHeight - 100) {
+                const animationDelay = element.getAttribute('data-delay') || '0s';
+                element.style.animationDelay = animationDelay;
+                element.style.opacity = '1';
             }
         });
-    });
+    };
+    
+    // Initialize animations
+    window.addEventListener('load', animateOnScroll);
+    window.addEventListener('scroll', animateOnScroll);
     
     // Header shadow on scroll
     window.addEventListener('scroll', function() {
-        const header = document.querySelector('.animated-header');
+        const header = document.querySelector('.main-header');
         if (window.scrollY > 50) {
-            header.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.2)';
+            header.style.boxShadow = '0 5px 20px rgba(0, 0, 0, 0.1)';
         } else {
-            header.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.1)';
+            header.style.boxShadow = 'none';
         }
+    });
+    
+    // Tool hover effect
+    const toolCards = document.querySelectorAll('.tool-card');
+    toolCards.forEach(card => {
+        card.addEventListener('mouseenter', function() {
+            this.querySelector('.tool-icon').style.transform = 'scale(1.1)';
+        });
+        
+        card.addEventListener('mouseleave', function() {
+            this.querySelector('.tool-icon').style.transform = 'scale(1)';
+        });
     });
 });
